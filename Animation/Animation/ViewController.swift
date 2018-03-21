@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         let flower = UIImageView(image: UIImage(named: "flower"))
         // 透明度を0にする
         flower.alpha = 0
+        
         // 0.2倍サイズにする
         let scaleTransform = CGAffineTransform(scaleX: 0.2, y: 0.2)
         // -π/2 回転する
@@ -34,6 +35,12 @@ class ViewController: UIViewController {
         let transform = scaleTransform.concatenating(rotationTransform)
         // flowerを変形させる
         flower.transform = transform
+        
+        // タップされた座標にflowerを追加する
+        flower.center = sender.location(in: self.view)
+        view.addSubview(flower)
+        
+        
     }
 }
 
