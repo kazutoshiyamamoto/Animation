@@ -26,6 +26,14 @@ class ViewController: UIViewController {
         let flower = UIImageView(image: UIImage(named: "flower"))
         // 透明度を0にする
         flower.alpha = 0
+        // 0.2倍サイズにする
+        let scaleTransform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+        // -π/2 回転する
+        let rotationTransform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/2))
+        // トランスフォームを足し合わせる
+        let transform = scaleTransform.concatenating(rotationTransform)
+        // flowerを変形させる
+        flower.transform = transform
     }
 }
 
