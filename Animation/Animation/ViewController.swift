@@ -9,18 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
     @IBAction func tapView(_ sender: UITapGestureRecognizer) {
         // flowerを作る
         let flower = UIImageView(image: UIImage(named: "flower"))
@@ -40,7 +40,17 @@ class ViewController: UIViewController {
         flower.center = sender.location(in: self.view)
         view.addSubview(flower)
         
-        
+        // アニメーション
+        UIView.animate(withDuration: 1.0, // １秒間で再生
+                       delay: 0, // 待ち時間なし
+                       options: [.curveEaseInOut], // イーズインアウト
+                       animations: {
+                        // 透明度を1にする
+                        flower.alpha = 1.0
+                        // 変形を戻す
+                        flower.transform = .identity
+        },
+                       completion: nil)
     }
 }
 
